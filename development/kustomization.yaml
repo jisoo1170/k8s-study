@@ -1,0 +1,8 @@
+resources:
+- namespace.yaml
+- deployment.yaml
+- service.yaml
+images:
+- name: backend-image
+  newName: nginx
+  newTag: 1.14
