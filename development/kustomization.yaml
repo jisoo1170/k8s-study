@@ -5,4 +5,4 @@ resources:
 images:
 - name: backend-image
   newName: nginx
-  newTag: 1.14
+  newTag: latest
