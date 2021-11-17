@@ -4,6 +4,7 @@ resources:
 - service.yaml
 images:
 - name: backend-image
-  newName: latest
+  newName: nginx
+  newTag: latest
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
