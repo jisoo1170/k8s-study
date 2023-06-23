@@ -15,6 +15,6 @@ spec:
     spec:
       containers:
         - name: api
-          image: backend-image:latest
+          image: nginx:latest
           ports:
             - containerPort: 80

@@ -1,0 +1,80 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: in-house-eimmo-dev
+  annotations:
+    notifications.argoproj.io/subscribe.on-deployed.slack: channel-name
+    notifications.argoproj.io/subscribe.on-sync-succeeded.slack: deploy
+spec:
+  project: default
+  source:
+    repoURL: 'https://github.com/bluewhalekr/eimmo-infra'
+    path: app/in_house_development
+    targetRevision: HEAD
+  destination:
+    server: 'https://kubernetes.default.svc'
+    namespace: in-house-eimmo
+  syncPolicy:
+    automated: { }
+    syncOptions:
+      - ApplyOutOfSyncOnly=true
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: in-house-eimmo-qa
+  annotations:
+    notifications.argoproj.io/subscribe.on-sync-succeeded.slack: deploy
+spec:
+  project: default
+  source:
+    repoURL: 'https://github.com/bluewhalekr/eimmo-infra'
+    path: app/in_house_qa
+    targetRevision: HEAD
+  destination:
+    server: 'https://kubernetes.default.svc'
+    namespace: in-house-qa
+  syncPolicy:
+    automated: { }
+    syncOptions:
+      - ApplyOutOfSyncOnly=true
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: mimmo-dev
+  annotations:
+    notifications.argoproj.io/subscribe.on-sync-succeeded.slack: deploy
+spec:
+  project: default
+  source:
+    repoURL: 'https://github.com/bluewhalekr/eimmo-infra'
+    path: mimmo-app/development
+    targetRevision: HEAD
+  destination:
+    server: 'https://kubernetes.default.svc'
+    namespace: mimmo
+  syncPolicy:
+    automated: { }
+    syncOptions:
+      - ApplyOutOfSyncOnly=true
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: mimmo-qa
+  annotations:
+    notifications.argoproj.io/subscribe.on-sync-succeeded.slack: deploy
+spec:
+  project: default
+  source:
+    repoURL: 'https://github.com/bluewhalekr/eimmo-infra'
+    path: mimmo-app/qa
+    targetRevision: HEAD
+  destination:
+    server: 'https://kubernetes.default.svc'
+    namespace: mimmo-qa
+  syncPolicy:
+    automated: { }
+    syncOptions:
+      - ApplyOutOfSyncOnly=true
