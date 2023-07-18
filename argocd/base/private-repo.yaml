@@ -9,4 +9,4 @@ stringData:
   type: git
   url: https://github.com/bluewhalekr/eimmo-infra
   username: not-used
-  password: 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
+  password: {{eimmo-infra}}
