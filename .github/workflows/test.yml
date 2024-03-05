@@ -1,0 +1,36 @@
+name: admin, indoor, app stg/perf 환경을 배포한다
+
+on:
+  workflow_dispatch:
+    inputs:
+      indoor_api:
+        description: "indoor-api가 배포 대상이라면 체크해주세요."
+        type: boolean
+        required: true
+        default: true
+      admin_api:
+        description: "admin-api가 배포 대상이라면 체크해주세요."
+        type: boolean
+        required: true
+        default: true
+      app_api:
+        description: "app-api가 배포 대상이라면 체크해주세요."
+        type: boolean
+        required: true
+        default: true
+
+jobs:
+  deploy_indoor_api:
+    runs-on: ubuntu-latest
+    if: ${{ inputs.indoor_api == 'true' }}
+    name: ${{ inputs.env }} 환경 ${{ inputs.tag }}.indoor-api-${{ inputs.version }} 배포한다
+
+  deploy_admin_api:
+    runs-on: ubuntu-latest
+    if: ${{ inputs.admin_api == 'true' }}
+    name: ${{ inputs.env }} 환경 ${{ inputs.tag }}.admin-api-${{ inputs.version }} 배포한다
+
+  deploy_app_api:
+    runs-on: ubuntu-latest
+    if: ${{ inputs.app_api == 'true' }}
+    name: ${{ inputs.env }} 환경 ${{ inputs.tag }}.app-api-${{ inputs.version }} 배포한다
