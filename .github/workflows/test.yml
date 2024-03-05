@@ -28,21 +28,21 @@ on:
 jobs:
   deploy_indoor_api:
     runs-on: ubuntu-latest
-    if: ${{ inputs.indoor_api == true }}
     name: ${{ inputs.env }} 환경 ${{ inputs.tag }}.indoor-api-${{ inputs.version }} 배포한다
+    if: ${{ inputs.indoor_api == true }}
     steps:
     - run: echo ${{ inputs.env }} 환경 ${{ inputs.tag }}.indoor-api-${{ inputs.version }}
 
   deploy_admin_api:
     runs-on: ubuntu-latest
-    if: ${{ inputs.admin_api == true }}
     name: ${{ inputs.env }} 환경 ${{ inputs.tag }}.admin-api-${{ inputs.version }} 배포한다
+    if: ${{ inputs.admin_api == true }}
     steps:
     - run: echo ${{ inputs.env }} 환경 ${{ inputs.tag }}.admin-api-${{ inputs.version }}
     
   deploy_app_api:
     runs-on: ubuntu-latest
-    if: ${{ inputs.app_api == true }}
     name: ${{ inputs.env }} 환경 ${{ inputs.tag }}.app-api-${{ inputs.version }} 배포한다
+    if: ${{ inputs.app_api == true }}
     steps:
     - run: echo ${{ inputs.env }} 환경 ${{ inputs.tag }}.app-api-${{ inputs.version }}
